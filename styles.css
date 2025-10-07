@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🌈 Background – subtle gradient with glow */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    animation: gradientShift 8s ease infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 🟦 Main box – glassmorphism + neon glow */
+.box {
+    position: relative;
+    width: 450px;
+    height: 550px;
+    border-radius: 30px;
+    background: rgba(40, 44, 52, 0.8);
+    padding: 30px 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 0 25px rgba(0, 255, 255, 0.2),
+        inset 0 0 15px rgba(255, 255, 255, 0.05),
+        inset 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+h2 {
+    color: #00fff5;
+    width: 100%;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* ✨ Input box – glowing inner shadow */
+#inputBx {
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-size: 1em;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow:
+        inset 2px 2px 10px rgba(0, 255, 255, 0.2),
+        inset -2px -2px 10px rgba(0, 255, 255, 0.2),
+        0 0 10px rgba(0, 255, 255, 0.2);
+    transition: 0.3s;
+}
+
+#inputBx:focus {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px #00fff5;
+}
+
+/* 📝 To-do list container */
+#list {
+    position: relative;
+    margin-top: 20px;
+    max-height: 350px;
+    overflow-y: hidden;
+}
+
+/* hide scrollbar */
+#list::-webkit-scrollbar { display: none; }
+#list { scrollbar-width: none; }
+
+/* ✅ Each task item – neon gradient with smooth depth */
+.box li {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #0077ff, #00e0ff);
+    margin: 15px 0;
+    padding: 10px 15px 10px 45px;
+    min-height: 45px;
+    cursor: pointer;
+    border-radius: 22.5px;
+    color: #fff;
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.4),
+        inset 0 0 5px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    transition: 0.2s ease;
+}
+
+.box li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+/* ❌ Delete button – glowing pink neon */
+.box li i {
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff006e;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px rgba(255, 0, 110, 0.6),
+        inset 0 0 5px rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+
+.box li i::before,
+.box li i::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background: #fff;
+}
+
+.box li i::before { transform: rotate(45deg); }
+.box li i::after { transform: rotate(-45deg); }
+
+.box li i:hover {
+    transform: scale(1.15);
+    background: #ff4f8a;
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.9);
+}
+
+/* ⭕ Left check circle */
+.box li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+/* ✅ Completed task style */
+.box li.done {
+    background: linear-gradient(135deg, #00c853, #00e676);
+    box-shadow: 0 0 10px rgba(0, 255, 100, 0.6);
+}
+
+.box li.done::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    width: 12px;
+    height: 6px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(315deg);
+}
